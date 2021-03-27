@@ -278,7 +278,7 @@ endif()
 
 if(ZZIP_COMPAT OR ZZIP_LIBTOOL)
   if(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG)
-    execute_process(COMMAND bash -c "ln --help"
+    execute_process(COMMAND ${BASH} -c "ln --help"
         OUTPUT_VARIABLE ln_verbose_help
         ERROR_QUIET
     )
@@ -302,7 +302,7 @@ if(ZZIP_COMPAT)
     get_target_property(libname libzzip OUTPUT_NAME)
     get_target_property(librelease libzzip RELEASE_POSTFIX)
     get_target_property(libversion libzzip VERSION)
-    install(CODE "execute_process(COMMAND bash -c \"set -e
+    install(CODE "execute_process(COMMAND ${BASH} -c \"set -e
         cd $DESTDIR/${libdir}
         if [ -f ${lib}${libname}${librelease}.${libversion}${dll} ]; then
           # Fix for APPLE where dylib goes in the end
@@ -329,7 +329,7 @@ if(ZZIP_LIBTOOL)
     get_target_property(libname libzzip OUTPUT_NAME)
     get_target_property(librelease libzzip RELEASE_POSTFIX)
     get_target_property(libversion libzzip VERSION)
-    install(CODE "execute_process(COMMAND bash -c \"set -e
+    install(CODE "execute_process(COMMAND ${BASH} -c \"set -e
         cd $DESTDIR/${libdir}
         if [ -f ${lib}${libname}${librelease}.${libversion}${dll} ]; then
           # Fix for APPLE where dylib goes in the end
@@ -349,7 +349,7 @@ if(ZZIP_LIBTOOL)
     get_target_property(libname libzzipfseeko OUTPUT_NAME)
     get_target_property(librelease libzzipfseeko RELEASE_POSTFIX)
     get_target_property(libversion libzzipfseeko VERSION)
-    install(CODE "execute_process(COMMAND bash -c \"set -e
+    install(CODE "execute_process(COMMAND ${BASH} -c \"set -e
         cd $DESTDIR/${libdir}
         if [ -f ${lib}${libname}${librelease}.${libversion}${dll} ]; then
           # Fix for APPLE where dylib goes in the end
@@ -370,7 +370,7 @@ if(ZZIP_LIBTOOL)
     get_target_property(libname libzzipmmapped OUTPUT_NAME)
     get_target_property(librelease libzzipmmapped RELEASE_POSTFIX)
     get_target_property(libversion libzzipmmapped VERSION)
-    install(CODE "execute_process(COMMAND bash -c \"set -e
+    install(CODE "execute_process(COMMAND ${BASH} -c \"set -e
         cd $DESTDIR/${libdir}
         if [ -f ${lib}${libname}${librelease}.${libversion}${dll} ]; then
           # Fix for APPLE where dylib goes in the end

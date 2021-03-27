@@ -89,7 +89,7 @@ install(TARGETS libzzipwrap
 
 if(ZZIP_LIBTOOL)
   if(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG)
-    execute_process(COMMAND bash -c "ln --help"
+    execute_process(COMMAND ${BASH} -c "ln --help"
         OUTPUT_VARIABLE ln_verbose_help
         ERROR_QUIET
     )
@@ -111,7 +111,7 @@ if(ZZIP_LIBTOOL)
     get_target_property(libname libzzipwrap OUTPUT_NAME)
     get_target_property(librelease libzzipwrap RELEASE_POSTFIX)
     get_target_property(libversion libzzipwrap VERSION)
-    install(CODE "execute_process(COMMAND bash -c \"set -e
+    install(CODE "execute_process(COMMAND ${BASH} -c \"set -e
         cd $DESTDIR/${libdir}
         [ -f ${lib}${libname}${librelease}${dll}.${libversion} ] || exit 0
         echo -n .. Installing: `pwd`
